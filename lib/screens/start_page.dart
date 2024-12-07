@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quick_deliver_app/screens/login_page.dart';
 
 class StartPage extends StatelessWidget {
   const StartPage({super.key});
@@ -30,7 +31,13 @@ class StartPage extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.only(top: 470),
                 child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return const LoginPage();
+                        },
+                      ));
+                    },
                     icon: const Icon(
                       Icons.arrow_circle_right,
                       size: 70,
