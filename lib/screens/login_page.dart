@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quick_deliver_app/widgets/custom_button.dart';
+import 'package:quick_deliver_app/widgets/custom_text.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -15,6 +17,27 @@ class LoginPage extends StatelessWidget {
                 image:
                     AssetImage('assets/images/photo_2024-12-05_11-06-36.jpg'),
                 fit: BoxFit.fill)),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 150),
+            child: Column(
+              children: [
+                CustomText(hintText: 'First name'),
+                CustomText(hintText: 'Last name'),
+                CustomText(
+                    hintText: 'my number',
+                    inputType: const TextInputType.numberWithOptions()),
+                CustomButton(text: 'Login'),
+                const Text("Don't have an account,",
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                const Text('create account',
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              ],
+            ),
+          ),
+        ),
       ),
     ));
   }
