@@ -23,8 +23,8 @@ class CustomButton extends StatelessWidget {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          height: 60,
-          width: 150,
+          height: 62,
+          width: 160,
         ),
       ),
     );

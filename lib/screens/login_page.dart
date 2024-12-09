@@ -19,32 +19,36 @@ class LoginPage extends StatelessWidget {
                     AssetImage('assets/images/photo_2024-12-05_11-06-36.jpg'),
                 fit: BoxFit.fill)),
         child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 150),
-            child: Column(
-              children: [
-                CustomText(hintText: 'First name'),
-                CustomText(hintText: 'Last name'),
-                CustomText(
-                    hintText: 'my number',
-                    inputType: const TextInputType.numberWithOptions()),
-                CustomButton(text: 'Login'),
-                const Text("Don't have an account,",
-                    style:
-                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (context) {
-                        return const RegisterPage();
-                      },
-                    ));
-                  },
-                  child: const Text('create account',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                ),],
-            ),
+          padding:const EdgeInsets.only(top: 150),
+          child: Column(
+            children: [
+              CustomText(hintText: 'First name'),
+              CustomText(hintText: 'Last name'),
+              CustomText(
+                  hintText: 'password',isPasswordField: true,
+                  ),
+              CustomButton(text: 'Login'),
+              const SizedBox(height: 20),
+              const Text("Don't have an account,",
+                  style:
+                      TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return const RegisterPage();
+                    },
+                  ));
+                },
+                child:const Card(
+                  color:  Color.fromARGB(255, 194, 183, 183),
+                  elevation: 20,
+                  child: Text('create account',
+                      style: TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold)),
+                ),
+              ),
+            ],
           ),
         ),
       ),

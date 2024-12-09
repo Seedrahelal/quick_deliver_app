@@ -5,19 +5,20 @@ class CustomText extends StatefulWidget {
     this.hintText,
     this.inputType,
     this.onchanged,
+    this.isPasswordField = false,
   });
 
   final String? hintText;
   final TextInputType? inputType;
   final Function(String)? onchanged;
-
+  final bool isPasswordField;
   @override
   _CustomTextState createState() => _CustomTextState();
 }
 
 class _CustomTextState extends State<CustomText> {
   FocusNode _focusNode = FocusNode();
-
+  bool _obscureText = true;
   @override
   void initState() {
     super.initState();
@@ -40,6 +41,7 @@ class _CustomTextState extends State<CustomText> {
         height: 80,
         child: TextFormField(
           focusNode: _focusNode,
+          obscureText: widget.isPasswordField ? _obscureText : false,
           validator: (value) {
             if (value?.isEmpty ?? true) {
               return 'Field is Required';
@@ -68,7 +70,19 @@ class _CustomTextState extends State<CustomText> {
             ),
             filled: _focusNode.hasFocus,
             fillColor:
-                _focusNode.hasFocus ? Colors.grey[200] : Colors.transparent,
+                _focusNode.hasFocus ? const Color.fromARGB(255, 172, 161, 161) : Colors.transparent,
+            suffixIcon: widget.isPasswordField
+                ? IconButton(
+                    icon: Icon(
+                      _obscureText ? Icons.visibility_off : Icons.visibility,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
+                  )
+                : null,
           ),
         ),
       ),
