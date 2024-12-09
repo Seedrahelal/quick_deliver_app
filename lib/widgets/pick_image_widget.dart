@@ -8,10 +8,9 @@ class PickImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: 200,
-        height: 200,
+        width: 190,
+        height: 190,
         child: CircleAvatar(
-          backgroundColor: Colors.grey.shade200,
           backgroundImage: const AssetImage('assets/images/photo_2024-12-07_10-17-49.jpg'),
           child: Stack(
             children: [
