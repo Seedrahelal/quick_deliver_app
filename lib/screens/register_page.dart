@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quick_deliver_app/screens/home_page.dart';
 import 'package:quick_deliver_app/widgets/custom_button.dart';
 import 'package:quick_deliver_app/widgets/custom_text.dart';
 import 'package:quick_deliver_app/widgets/pick_image_widget.dart';
@@ -21,7 +22,13 @@ class RegisterPage extends StatelessWidget {
             CustomText(hintText: 'Last Name :'),
             CustomText(hintText: 'Password',isPasswordField: true),
             CustomText(hintText: 'Phone Number :',inputType:const TextInputType.numberWithOptions(),),
-            CustomButton(text: 'Register'),
+            CustomButton(text: 'Register',onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return const HomePage();
+                        },
+                      ));
+                    }),
             const SizedBox(height: 30)
           ],
         ),

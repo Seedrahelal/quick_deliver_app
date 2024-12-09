@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quick_deliver_app/screens/home_page.dart';
 import 'package:quick_deliver_app/screens/register_page.dart';
 import 'package:quick_deliver_app/widgets/custom_button.dart';
 import 'package:quick_deliver_app/widgets/custom_text.dart';
@@ -27,7 +28,13 @@ class LoginPage extends StatelessWidget {
               CustomText(
                   hintText: 'password',isPasswordField: true,
                   ),
-              CustomButton(text: 'Login'),
+              CustomButton(text: 'Login',onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return const HomePage();
+                        },
+                      ));
+                    }),
               const SizedBox(height: 20),
               const Text("Don't have an account,",
                   style:
