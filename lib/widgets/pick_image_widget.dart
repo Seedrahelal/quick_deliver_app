@@ -8,30 +8,33 @@ class PickImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        width: 190,
-        height: 190,
+        width: 160,
+        height: 160,
         child: CircleAvatar(
-          backgroundImage: const AssetImage('assets/images/photo_2024-12-07_10-17-49.jpg'),
+          backgroundImage:
+              const AssetImage('assets/images/pick_photo.jpg'),
           child: Stack(
             children: [
               Positioned(
-                bottom: 24,
-                right: 24,
+                bottom: 5,
+                right: 5,
                 child: GestureDetector(
                   onTap: () async {},
                   child: Container(
-                    height: 50,
-                    width: 50,
+                    height: 55,
+                    width: 55,
                     decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 116, 33, 51),
-                      border: Border.all(color: Colors.white, width: 3),
+                      border: Border.all(
+                          color: const Color.fromARGB(255, 231, 230, 230),
+                          width: 3),
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: GestureDetector(
                       onTap: () {},
                       child: const Icon(
                         Icons.camera_alt_sharp,
-                        color: Colors.white,
+                        color: Color.fromARGB(255, 231, 230, 230),
                         size: 30,
                       ),
                     ),
