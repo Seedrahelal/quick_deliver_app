@@ -11,7 +11,7 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          backgroundColor: const Color.fromARGB(255, 231, 230, 230),
+      backgroundColor: const Color.fromARGB(255, 231, 230, 230),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -20,15 +20,20 @@ class RegisterPage extends StatelessWidget {
             const PickImageWidget(),
             CustomText(hintText: 'First Name :'),
             CustomText(hintText: 'Last Name :'),
-            CustomText(hintText: 'Password',isPasswordField: true),
-            CustomText(hintText: 'Phone Number :',inputType:const TextInputType.numberWithOptions(),),
-            CustomButton(text: 'Register',onTap: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return const HomePage();
-                        },
-                      ));
-                    }),
+            CustomText(hintText: 'Password', isPasswordField: true),
+            CustomText(
+              hintText: 'Phone Number :',
+              inputType: const TextInputType.numberWithOptions(),
+            ),
+            CustomButton(
+                text: 'Register',
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return  HomePage();
+                    },
+                  ));
+                }),
             const SizedBox(height: 30)
           ],
         ),
