@@ -34,7 +34,7 @@ class LoginPage extends StatelessWidget {
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
-                        return  HomePage();
+                        return const HomePage();
                       },
                     ));
                   }),
