@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:quick_deliver_app/helper/constants.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,7 +15,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    const backgroundColor = Color.fromARGB(255, 78, 76, 76);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
