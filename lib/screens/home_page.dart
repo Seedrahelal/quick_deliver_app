@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:quick_deliver_app/helper/constants.dart';
+import 'package:quick_deliver_app/widgets/custom_app_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,49 +17,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(60),
-        child: Container(
-          decoration: const BoxDecoration(
-            color: backgroundColor,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black54,
-                blurRadius: 8,
-                offset: Offset(0, 4),
-              )
-            ],
-          ),
-          child: AppBar(
-            foregroundColor: Colors.white,
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            centerTitle: true,
-            title: const Text(
-              'Quick Deliver',
-              style: TextStyle(
-                  fontSize: 28,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Pacifico'),
-            ),
-            leading: Padding(
-              padding: const EdgeInsets.only(left: 14),
-              child: Builder(
-                builder: (context) => IconButton(
-                  icon: const Icon(
-                    FontAwesomeIcons.gears,
-                    color: Colors.white,
-                    size: 30,
-                  ),
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                ),
-              ),
-            ),
-          ),
-        ),
+      appBar:const PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: CustomAppBar(),
       ),
       drawer: Drawer(
         backgroundColor: backgroundColor,
@@ -218,3 +179,4 @@ class _HomePageState extends State<HomePage> {
     }
   }
 }
+
