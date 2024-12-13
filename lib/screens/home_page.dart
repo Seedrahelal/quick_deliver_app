@@ -31,9 +31,9 @@ class _HomePageState extends State<HomePage> {
           ),
           child: AppBar(
             foregroundColor: Colors.white,
-            backgroundColor:
-                Colors.transparent, // جعل الخلفية شفافة لاستخدام BoxDecoration
+            backgroundColor: Colors.transparent,
             elevation: 0,
+            centerTitle: true,
             title: const Text(
               'Quick Deliver',
               style: TextStyle(
@@ -42,24 +42,84 @@ class _HomePageState extends State<HomePage> {
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Pacifico'),
             ),
-            actions: [
-              Padding(
-                padding: const EdgeInsets.only(right: 12),
-                child: IconButton(
-                  onPressed: () {},
+            leading: Padding(
+              padding: const EdgeInsets.only(left: 14),
+              child: Builder(
+                builder: (context) => IconButton(
                   icon: const Icon(
                     FontAwesomeIcons.gears,
                     color: Colors.white,
                     size: 30,
                   ),
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
                 ),
-              )
-            ],
+              ),
+            ),
           ),
         ),
       ),
+      drawer: Drawer(
+        backgroundColor: backgroundColor,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                colors: [
+                  Color.fromARGB(255, 156, 85, 100),
+                  Color.fromARGB(255, 107, 9, 30),
+                ],
+              )),
+              child: Text(
+                'Settings',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Pacifico',
+                  color: Colors.white,
+                  fontSize: 40,
+                ),
+              ),
+            ),
+            const SizedBox(height: 30),
+            ListTile(
+              leading: const Icon(FontAwesomeIcons.idCard,
+                  color: Colors.white, size: 35),
+              title: const Text('My Profile',
+                  style: TextStyle(color: Colors.white, fontSize: 18,fontWeight: FontWeight.bold)),
+              onTap: () {},
+            ),
+            const SizedBox(height: 30),
+            ListTile(
+              leading: const Icon(FontAwesomeIcons.gratipay,
+                  color: Colors.white, size: 35),
+              title: const Text('My Favorites',
+                  style: TextStyle(color: Colors.white, fontSize: 18,fontWeight: FontWeight.bold)),
+              onTap: () {},
+            ),
+            const SizedBox(height: 30),
+            ListTile(
+              leading: const Icon(FontAwesomeIcons.cartPlus,
+                  color: Colors.white, size: 35),
+              title: const Text('Shopping Cart',
+                  style: TextStyle(color: Colors.white, fontSize: 18,fontWeight: FontWeight.bold)),
+              onTap: () {},
+            ),
+            const SizedBox(height: 30),
+            ListTile(
+              leading: const Icon(FontAwesomeIcons.globe,
+                  color: Colors.white, size: 35),
+              title: const Text('Language',
+                  style: TextStyle(color: Colors.white, fontSize: 18,fontWeight: FontWeight.bold)),
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
       body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 1500),
         switchInCurve: Curves.easeInOutCubic,
         switchOutCurve: Curves.easeInOutCubic,
         child: _pages[_currentIndex],

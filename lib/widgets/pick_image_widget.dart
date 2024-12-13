@@ -18,8 +18,7 @@ class PickImageWidget extends StatelessWidget {
               right: 5,
               child: GestureDetector(
                 onTap: () async {
-                  final pickedFile = await ImagePicker()
-                      .pickImage(source: ImageSource.gallery);
+                  await ImagePicker().pickImage(source: ImageSource.gallery);
                 },
                 child: Container(
                   height: 55,
