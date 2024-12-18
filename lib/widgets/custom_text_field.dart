@@ -5,11 +5,11 @@ class CustomTextField extends StatefulWidget {
   const CustomTextField(
       {super.key,
       required this.hint,
-      required this.color,
+      this.keyboardType,
       this.isPassword = false});
   final String hint;
-  final Color color;
   final bool isPassword;
+  final TextInputType? keyboardType;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -22,8 +22,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return Focus(
       child: Builder(builder: (context) {
-        final hasfocus = Focus.of(context).hasFocus;
         return TextFormField(
+            keyboardType: widget.keyboardType,
             obscureText: widget.isPassword ? isObscure : false,
             validator: (value) {
               if (value?.isEmpty ?? true) {
@@ -32,15 +32,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 return null;
               }
             },
-            cursorColor: widget.color,
+            cursorColor: const Color.fromARGB(255, 3, 46, 116),
             decoration: InputDecoration(
                 hintText: widget.hint,
                 hintStyle: const TextStyle(color: kPrimaryColor, fontSize: 18),
                 border: buildBorder(),
                 enabledBorder: buildBorder(),
-                focusedBorder: buildBorder(hasfocus
-                    ? const Color.fromARGB(255, 3, 46, 116)
-                    : kPrimaryColor),
+                focusedBorder:
+                    buildBorder(const Color.fromARGB(255, 3, 46, 116)),
                 suffixIcon: widget.isPassword
                     ? IconButton(
                         onPressed: () {

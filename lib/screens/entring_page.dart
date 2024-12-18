@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quick_deliver/helper/constants.dart';
+import 'package:quick_deliver/screens/login_page.dart';
+import 'package:quick_deliver/screens/register_page.dart';
 import 'package:quick_deliver/widgets/custom_button.dart';
-import 'package:quick_deliver/widgets/custom_text_field.dart';
 
 class EntringPage extends StatefulWidget {
   const EntringPage({super.key});
@@ -20,7 +21,7 @@ class _EntringPageState extends State<EntringPage>
   void initState() {
     super.initState();
     controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 4));
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
     textOpacity = Tween<double>(begin: 0, end: 1).animate(
         CurvedAnimation(parent: controller, curve: const Interval(0, 0.5)));
     controller.forward();
@@ -58,19 +59,23 @@ class _EntringPageState extends State<EntringPage>
                             fontFamily: 'Pacifico',
                             fontSize: 30,
                             fontWeight: FontWeight.bold)),
-                    const SizedBox(height: 310),
+                    const SizedBox(height: 320),
                     CustomButton(
                       text: 'Login',
                       colorText: kPrimaryColor,
                       color: Colors.white,
                       onTap: () {
-                        login();
+                        login(context);
                       },
                     ),
+                    const SizedBox(height: 25),
                     CustomButton(
                       text: 'Register',
                       colorText: kPrimaryColor,
                       color: Colors.white,
+                      onTap: () {
+                        register(context);
+                      },
                     )
                   ],
                 ),
@@ -78,49 +83,5 @@ class _EntringPageState extends State<EntringPage>
             }),
       ),
     ));
-  }
-
-  void login() {
-    showModalBottomSheet(
-        isScrollControlled: true,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(25), topRight: Radius.circular(25))),
-        context: context,
-        builder: (context) {
-          return Padding(
-            padding: EdgeInsets.only(
-                top: 20,
-                left: 25,
-                right: 25,
-                bottom: MediaQuery.of(context).viewInsets.bottom + 25),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const SizedBox(height: 20),
-                  const Text('If you have an account...',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 20),
-                  const CustomTextField(
-                    hint: 'Phone Number :',
-                    color: kPrimaryColor,
-                  ),
-                  const SizedBox(height: 40),
-                  const CustomTextField(
-                    hint: 'Password :',isPassword: true,
-                    color: kPrimaryColor,
-                  ),
-                  const SizedBox(height: 50),
-                  CustomButton(
-                      text: 'Login',
-                      color: const Color(0xff516585),
-                      colorText: Colors.white),
-                ],
-              ),
-            ),
-          );
-        });
   }
 }

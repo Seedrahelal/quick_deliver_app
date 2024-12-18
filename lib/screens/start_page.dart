@@ -12,17 +12,17 @@ class StartPage extends StatefulWidget {
 class _StartPageState extends State<StartPage>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
-  late Animation<Offset> iconAnimation;
-  late Animation<double> textAnimation;
+  late Animation<Offset> _iconAnimation;
+  late Animation<double> _textAnimation;
 
   @override
   void initState() {
     super.initState();
     controller =
-        AnimationController(vsync: this, duration: const Duration(seconds: 2));
-    textAnimation = Tween<double>(begin: 0, end: 1).animate(
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+    _textAnimation = Tween<double>(begin: 0, end: 1).animate(
         CurvedAnimation(parent: controller, curve: const Interval(0, 1)));
-    iconAnimation = Tween<Offset>(begin: const Offset(-2, 0), end: Offset.zero)
+    _iconAnimation = Tween<Offset>(begin: const Offset(-2, 0), end: Offset.zero)
         .animate(
             CurvedAnimation(parent: controller, curve: const Interval(0, 1)));
     controller.forward();
@@ -50,10 +50,10 @@ class _StartPageState extends State<StartPage>
             children: [
               const SizedBox(height: 40),
               AnimatedBuilder(
-                  animation: textAnimation,
+                  animation: _textAnimation,
                   builder: (context, child) {
                     return Opacity(
-                      opacity: textAnimation.value,
+                      opacity: _textAnimation.value,
                       child: const Text(
                         "Hi , Welcome to     \n         Quick Deliver App ",
                         style: TextStyle(
@@ -66,7 +66,7 @@ class _StartPageState extends State<StartPage>
                   }),
               const SizedBox(height: 460),
               SlideTransition(
-                position: iconAnimation,
+                position: _iconAnimation,
                 child: IconButton(
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(
