@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quick_deliver/helper/constants.dart';
 
-class PickImageWidget extends StatelessWidget {
-  const PickImageWidget(
+class PickWidget extends StatelessWidget {
+  const PickWidget(
       {super.key,
       required this.photoAvatar,
       this.onTap,

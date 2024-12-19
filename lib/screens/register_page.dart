@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:quick_deliver/screens/map_screen.dart';
 import 'package:quick_deliver/widgets/custom_button.dart';
 import 'package:quick_deliver/widgets/custom_text_field.dart';
-import 'package:quick_deliver/widgets/pick_image_widget.dart';
+import 'package:quick_deliver/widgets/pick_widget.dart';
 
 void register(BuildContext context) {
   showModalBottomSheet(
@@ -30,7 +31,7 @@ void register(BuildContext context) {
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   Row(
                     children: [
-                      PickImageWidget(
+                      PickWidget(
                         height: 190.0,
                         width: 190.0,
                         bottom: 40,
@@ -43,13 +44,20 @@ void register(BuildContext context) {
                               .pickImage(source: ImageSource.gallery);
                         },
                       ),
-                      const PickImageWidget(
+                      PickWidget(
                         height: 115.0,
                         width: 115.0,
                         bottom: 5,
                         left: -2,
                         iconAvatar: Icons.add,
                         photoAvatar: 'assets/images/images.jpg',
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return const MapScreen();
+                            },
+                          ));
+                        },
                       ),
                     ],
                   ),
