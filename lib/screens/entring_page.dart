@@ -54,7 +54,12 @@ class _EntringPageState extends State<EntringPage>
                     const SizedBox(height: 100),
                     const Text(
                         "All Your Requests       \n      Are About Us😍 ",
-                        style: TextStyle(
+                        style: TextStyle(shadows: [
+                              BoxShadow(
+                                  color: Color.fromARGB(255, 251, 131, 3),
+                                  blurRadius: 30,
+                                  spreadRadius: 20)
+                            ],
                             color: Colors.white,
                             fontFamily: 'Pacifico',
                             fontSize: 30,
@@ -62,8 +67,8 @@ class _EntringPageState extends State<EntringPage>
                     const SizedBox(height: 320),
                     CustomButton(
                       text: 'Login',
-                      colorText: kPrimaryColor,
-                      color: Colors.white,
+                      colorText: Colors.white,
+                      color: kListColor,
                       onTap: () {
                         login(context);
                       },
@@ -71,8 +76,8 @@ class _EntringPageState extends State<EntringPage>
                     const SizedBox(height: 25),
                     CustomButton(
                       text: 'Register',
-                      colorText: kPrimaryColor,
-                      color: Colors.white,
+                      colorText: Colors.white,
+                      color: kListColor,
                       onTap: () {
                         register(context);
                       },

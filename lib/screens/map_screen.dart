@@ -103,57 +103,75 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Street Map',
-            style: TextStyle(
-                color: kPrimaryColor, fontFamily: 'Pacifico', fontSize: 30)),
-      ),
-      body: currentLocation == null
-          ? const Center(child: CircularProgressIndicator())
-          : FlutterMap(
-              mapController: mapController,
-              options: MapOptions(
-                initialCenter: LatLng(
-                    currentLocation!.latitude!, currentLocation!.longitude!),
-                initialZoom: 15.0,
-                onTap: (tapPosition, point) => _addDestinationMarker(point),
-              ),
-              children: [
-                TileLayer(
-                  urlTemplate:
-                      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                  subdomains: const ['a', 'b', 'c'],
-                ),
-                MarkerLayer(
-                  markers: markers,
-                ),
-                PolylineLayer(
-                  polylines: [
-                    Polyline(
-                      points: routePoints,
-                      strokeWidth: 4.0,
-                      color: Colors.red,
-                    ),
+    return SafeArea(
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(68),
+          child: AppBar(
+            foregroundColor: Colors.white,
+            backgroundColor: const Color.fromARGB(255, 18, 42, 82),
+            title: const Text(
+              'Street Map',
+              style: TextStyle(
+                  shadows: [
+                    BoxShadow(
+                        color: Color.fromARGB(255, 251, 131, 3),
+                        blurRadius: 10,
+                        spreadRadius: 10)
                   ],
-                ),
-              ],
+                  fontSize: 30,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Pacifico'),
             ),
-      floatingActionButton: FloatingActionButton(
-        elevation: 30,
-        focusColor: const Color.fromARGB(255, 3, 46, 116),
-        backgroundColor: kPrimaryColor,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(30))),
-        onPressed: () {
-          if (currentLocation != null) {
-            mapController.move(
-              LatLng(currentLocation!.latitude!, currentLocation!.longitude!),
-              15.0,
-            );
-          }
-        },
-        child: const Icon(Icons.my_location),
+          ),
+        ),
+        body: currentLocation == null
+            ? const Center(child: CircularProgressIndicator())
+            : FlutterMap(
+                mapController: mapController,
+                options: MapOptions(
+                  initialCenter: LatLng(
+                      currentLocation!.latitude!, currentLocation!.longitude!),
+                  initialZoom: 15.0,
+                  onTap: (tapPosition, point) => _addDestinationMarker(point),
+                ),
+                children: [
+                  TileLayer(
+                    urlTemplate:
+                        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                    subdomains: const ['a', 'b', 'c'],
+                  ),
+                  MarkerLayer(
+                    markers: markers,
+                  ),
+                  PolylineLayer(
+                    polylines: [
+                      Polyline(
+                        points: routePoints,
+                        strokeWidth: 4.0,
+                        color: Colors.red,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+        floatingActionButton: FloatingActionButton(
+          elevation: 30,
+          focusColor: const Color.fromARGB(255, 18, 42, 82),
+          backgroundColor: kPrimaryColor,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(30))),
+          onPressed: () {
+            if (currentLocation != null) {
+              mapController.move(
+                LatLng(currentLocation!.latitude!, currentLocation!.longitude!),
+                15.0,
+              );
+            }
+          },
+          child: const Icon(Icons.my_location),
+        ),
       ),
     );
   }

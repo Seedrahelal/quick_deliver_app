@@ -8,7 +8,7 @@ class CustomButton extends StatelessWidget {
       required this.colorText});
   final VoidCallback? onTap;
   final String text;
-  final Color color;
+  final List<Color> color;
   final Color colorText;
 
   @override
@@ -17,13 +17,20 @@ class CustomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-            color: color, borderRadius: BorderRadius.circular(25)),
+            gradient: LinearGradient(colors: color),
+            borderRadius: BorderRadius.circular(25)),
         height: 62,
-        width: 160,
+        width: 170,
         child: Center(
           child: Text(
             text,
             style: TextStyle(
+                shadows: const [
+                  BoxShadow(
+                      color: Color.fromARGB(255, 251, 131, 3),
+                      blurRadius: 30,
+                      spreadRadius: 30)
+                ],
                 fontSize: 30,
                 color: colorText,
                 fontFamily: 'Pacifico',

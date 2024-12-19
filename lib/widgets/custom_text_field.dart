@@ -35,7 +35,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             cursorColor: const Color.fromARGB(255, 3, 46, 116),
             decoration: InputDecoration(
                 hintText: widget.hint,
-                hintStyle: const TextStyle(color: kPrimaryColor, fontSize: 18),
+                hintStyle: const TextStyle(color: Color.fromARGB(255, 158, 83, 3), fontSize: 18),
                 border: buildBorder(),
                 enabledBorder: buildBorder(),
                 focusedBorder:
@@ -47,7 +47,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
                             isObscure = !isObscure;
                           });
                         },
-                        icon: Icon(
+                        icon: Icon(shadows: [
+                              BoxShadow(
+                                  color: Color.fromARGB(255, 251, 131, 3),
+                                  blurRadius: 30,
+                                  spreadRadius: 30)
+                            ],
                             isObscure ? Icons.visibility_off : Icons.visibility,
                             color: kPrimaryColor))
                     : null));

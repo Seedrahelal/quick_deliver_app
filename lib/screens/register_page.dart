@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:quick_deliver/helper/constants.dart';
+import 'package:quick_deliver/screens/home_page.dart';
 import 'package:quick_deliver/screens/map_screen.dart';
 import 'package:quick_deliver/widgets/custom_button.dart';
 import 'package:quick_deliver/widgets/custom_text_field.dart';
@@ -27,8 +29,12 @@ void register(BuildContext context) {
                 padding: EdgeInsets.zero,
                 children: [
                   const Text('If you do not have an account...',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                      style: TextStyle(shadows: [
+                        BoxShadow(
+                            color: Color.fromARGB(255, 251, 131, 3),
+                            blurRadius: 30,
+                            spreadRadius: 20)
+                      ], fontSize: 20, fontWeight: FontWeight.bold)),
                   Row(
                     children: [
                       PickWidget(
@@ -79,11 +85,19 @@ void register(BuildContext context) {
                     isPassword: true,
                   ),
                   const SizedBox(height: 40),
-                  const Center(
+                  Center(
                     child: CustomButton(
-                        text: 'Register',
-                        color: Color(0xff516585),
-                        colorText: Colors.white),
+                      text: 'Register',
+                      color: kListColor,
+                      colorText: Colors.white,
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const HomePage();
+                          },
+                        ));
+                      },
+                    ),
                   ),
                   const SizedBox(height: 70),
                 ],
