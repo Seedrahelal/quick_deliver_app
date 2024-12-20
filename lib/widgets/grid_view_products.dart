@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quick_deliver/screens/product_page.dart';
 import 'package:quick_deliver/widgets/custom_card.dart';
 
 class GridViewProducts extends StatelessWidget {
@@ -17,14 +18,15 @@ class GridViewProducts extends StatelessWidget {
             crossAxisSpacing: 7,
             mainAxisSpacing: 16),
         itemCount: 6,
-        itemBuilder: (context, index) => GestureDetector(
-            onTap: () {},
-            child: CustomCard(
-                height: 240,
-                width: 200,
-                widthCard: 170,
-                name: 'abatshi',
-                photoPath: 'assets/store/images (1).jpg',
-                onTap: () {})));
+        itemBuilder: (context, index) => CustomCard(
+              height: 240,
+              width: 200,
+              widthCard: 170,
+              name: 'fruit salad',
+              photoPath: 'assets/store/images (1).jpg',
+              onTap: () {
+                productPage(context);
+              },
+            ));
   }
 }

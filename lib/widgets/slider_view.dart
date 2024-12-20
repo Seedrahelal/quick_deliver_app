@@ -32,7 +32,7 @@ class SliderView extends StatelessWidget {
             enableInfiniteScroll: true,
             reverse: false,
             autoPlay: true,
-            autoPlayInterval: const Duration(seconds: 1),
+            autoPlayInterval: const Duration(seconds: 2),
             autoPlayAnimationDuration: const Duration(milliseconds: 1200),
             autoPlayCurve: Curves.fastOutSlowIn,
             enlargeCenterPage: true,
