@@ -31,7 +31,6 @@ class SettingsPage extends StatelessWidget {
                         spreadRadius: 20)
                   ],
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Pacifico',
                   color: Colors.white,
                   fontSize: 50,
                 ),

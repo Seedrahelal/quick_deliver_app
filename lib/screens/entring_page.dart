@@ -53,15 +53,9 @@ class _EntringPageState extends State<EntringPage>
                   children: [
                     const SizedBox(height: 100),
                     const Text(
-                        "All Your Requests       \n      Are About Us😍 ",
-                        style: TextStyle(shadows: [
-                              BoxShadow(
-                                  color: Color.fromARGB(255, 251, 131, 3),
-                                  blurRadius: 30,
-                                  spreadRadius: 20)
-                            ],
+                        "All  Your  Requests         \n        Are  About  Us😍 ",
+                        style: TextStyle(
                             color: Colors.white,
-                            fontFamily: 'Pacifico',
                             fontSize: 30,
                             fontWeight: FontWeight.bold)),
                     const SizedBox(height: 320),

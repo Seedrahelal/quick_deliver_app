@@ -26,6 +26,11 @@ class StorePage extends StatelessWidget {
         ),
         const SizedBox(height: 26),
         CustomCard(
+            boxShadow: const [
+                        BoxShadow(
+                            color: Color.fromARGB(255, 248, 169, 84),
+                            blurRadius: 30)
+                      ],
             height: 260,
             width: 260,
             widthCard: 250,
@@ -37,35 +42,55 @@ class StorePage extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) => const ViewStorePage()));
             }),
-        CustomCard(
+        CustomCard(boxShadow: const [
+                        BoxShadow(
+                            color: Color.fromARGB(255, 248, 169, 84),
+                            blurRadius: 30)
+                      ],
             height: 260,
             width: 260,
             widthCard: 250,
             name: 'Abu Abdo juices',
             photoPath: 'assets/store/images.jpg',
             onTap: () {}),
-        CustomCard(
+        CustomCard(boxShadow: const [
+                        BoxShadow(
+                            color: Color.fromARGB(255, 248, 169, 84),
+                            blurRadius: 30)
+                      ],
             height: 260,
             width: 260,
             widthCard: 250,
             name: 'Abu Abdo juices',
             photoPath: 'assets/store/images.jpg',
             onTap: () {}),
-        CustomCard(
+        CustomCard(boxShadow: const [
+                        BoxShadow(
+                            color: Color.fromARGB(255, 248, 169, 84),
+                            blurRadius: 30)
+                      ],
             height: 260,
             width: 260,
             widthCard: 250,
             name: 'Abu Abdo juices',
             photoPath: 'assets/store/images.jpg',
             onTap: () {}),
-        CustomCard(
+        CustomCard(boxShadow: const [
+                        BoxShadow(
+                            color: Color.fromARGB(255, 248, 169, 84),
+                            blurRadius: 30)
+                      ],
             height: 260,
             width: 260,
             widthCard: 250,
             name: 'Abu Abdo juices',
             photoPath: 'assets/store/images.jpg',
             onTap: () {}),
-        CustomCard(
+        CustomCard(boxShadow: const [
+                        BoxShadow(
+                            color: Color.fromARGB(255, 248, 169, 84),
+                            blurRadius: 30)
+                      ],
             height: 260,
             width: 260,
             widthCard: 250,

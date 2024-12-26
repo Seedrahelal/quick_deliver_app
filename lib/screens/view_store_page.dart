@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quick_deliver/helper/constants.dart';
 import 'package:quick_deliver/widgets/grid_view_products.dart';
 import 'package:quick_deliver/widgets/slider_view.dart';
 
@@ -19,12 +18,11 @@ class ViewStorePage extends StatelessWidget {
                 'Abu Abdo juices',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Pacifico',
-                  color: kPrimaryColor,
+                  color: Color.fromARGB(255, 3, 46, 116),
                   fontSize: 35,
                 ),
               ),
-              SizedBox(height: 25),
+              SizedBox(height: 16),
               SliderView(),
               SizedBox(height: 40),
               Text(

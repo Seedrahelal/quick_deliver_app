@@ -25,15 +25,9 @@ class CustomButton extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-                shadows: const [
-                  BoxShadow(
-                      color: Color.fromARGB(255, 251, 131, 3),
-                      blurRadius: 30,
-                      spreadRadius: 30)
-                ],
+                
                 fontSize: 30,
                 color: colorText,
-                fontFamily: 'Pacifico',
                 fontWeight: FontWeight.bold),
           ),
         ),

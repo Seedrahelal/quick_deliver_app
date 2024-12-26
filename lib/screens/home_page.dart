@@ -32,6 +32,10 @@ class _HomePageState extends State<HomePage> {
         ),
         bottomNavigationBar: Container(
           decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(35),
+                topRight: Radius.circular(35)
+                ),
             color: Color.fromARGB(255, 18, 42, 82),
             boxShadow: [
               BoxShadow(
@@ -54,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOutBack,
-                  padding: EdgeInsets.all(isSelected ? 14 : 8),
+                  padding: EdgeInsets.all(isSelected ? 12 : 8),
                   decoration: isSelected
                       ? const BoxDecoration(
                           gradient: LinearGradient(

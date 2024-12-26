@@ -8,12 +8,15 @@ class CustomCard extends StatelessWidget {
       required this.onTap,
       required this.width,
       required this.height,
-      required this.widthCard});
+      required this.widthCard,
+      this.boxShadow,this.boxBorder});
   final String name;
   final String photoPath;
   final dynamic onTap;
   final double width;
   final double widthCard;
+  final List<BoxShadow>? boxShadow;
+  final BoxBorder? boxBorder;
 
   final double height;
   @override
@@ -29,13 +32,9 @@ class CustomCard extends StatelessWidget {
                   clipBehavior: Clip.antiAlias,
                   width: width,
                   height: height,
-                  decoration: BoxDecoration(
+                  decoration: BoxDecoration(border:boxBorder ,
                       borderRadius: BorderRadius.circular(30),
-                      boxShadow: const [
-                        BoxShadow(
-                            color: Color.fromARGB(255, 248, 169, 84),
-                            blurRadius: 30)
-                      ]),
+                      boxShadow: boxShadow),
                   child: Image.asset(photoPath, fit: BoxFit.cover)),
               Positioned(
                 bottom: 0,

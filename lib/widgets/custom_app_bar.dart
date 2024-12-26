@@ -31,7 +31,7 @@ class CustomAppBar extends StatelessWidget {
               fontSize: 30,
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              fontFamily: 'Pacifico'),
+              ),
         ),
         leading: Padding(
           padding: const EdgeInsets.only(left: 14),

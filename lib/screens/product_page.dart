@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:quick_deliver/helper/constants.dart';
 
 void productPage(BuildContext context) {
   showDialog(
@@ -8,7 +7,7 @@ void productPage(BuildContext context) {
       builder: (context) {
         return Dialog(
             insetPadding:
-                const EdgeInsets.only(top: 30, left: 20, right: 20, bottom: 30),
+                const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
             shadowColor: const Color.fromARGB(255, 4, 48, 118),
             elevation: 200,
             shape: const RoundedRectangleBorder(
@@ -26,7 +25,6 @@ void productPage(BuildContext context) {
                     style: TextStyle(
                       wordSpacing: 8,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Pacifico',
                       color: Color.fromARGB(255, 3, 47, 122),
                       fontSize: 35,
                     ),
@@ -34,15 +32,14 @@ void productPage(BuildContext context) {
                   const SizedBox(height: 25),
                   Container(
                     height: 270,
-                    width: 302,
-                    decoration: BoxDecoration(
-                        gradient: const LinearGradient(colors: kListColor2),
-                        border: Border.all(color: kPrimaryColor, width: 3),
-                        borderRadius: BorderRadius.circular(30)),
+                    width: 300,
+                    decoration: BoxDecoration(color: const Color.fromARGB(255, 235, 180, 122),
+                        border: Border.all(color: const Color.fromARGB(255, 196, 104, 6), width: 3),
+                        borderRadius: BorderRadius.circular(35)),
                     child: Image.asset(
-                      'assets/store/images (1).jpg',
+                      'assets/store/photo_2024-12-22_15-16-53.jpg',
                       height: 260,
-                      width: 300,
+                      width: 290,
                     ),
                   ),
                   const SizedBox(height: 40),
@@ -111,7 +108,6 @@ class _RowWidgetState extends State<RowWidget> {
             style: const TextStyle(
                 fontSize: 26,
                 color: Color.fromARGB(255, 3, 47, 122),
-                fontFamily: 'Pacifico',
                 fontWeight: FontWeight.bold)),
         IconButton(
             onPressed: () {

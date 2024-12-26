@@ -89,6 +89,7 @@ class _MapScreenState extends State<MapScreen> {
 
   void _addDestinationMarker(LatLng point) {
     setState(() {
+      markers.clear();
       markers.add(
         Marker(
           width: 80.0,
@@ -98,7 +99,7 @@ class _MapScreenState extends State<MapScreen> {
         ),
       );
     });
-    _getRoute(point);
+    Navigator.pop(context, point);
   }
 
   @override
@@ -113,16 +114,16 @@ class _MapScreenState extends State<MapScreen> {
             title: const Text(
               'Street Map',
               style: TextStyle(
-                  shadows: [
-                    BoxShadow(
-                        color: Color.fromARGB(255, 251, 131, 3),
-                        blurRadius: 10,
-                        spreadRadius: 10)
-                  ],
-                  fontSize: 30,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Pacifico'),
+                shadows: [
+                  BoxShadow(
+                      color: Color.fromARGB(255, 251, 131, 3),
+                      blurRadius: 10,
+                      spreadRadius: 10)
+                ],
+                fontSize: 30,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),

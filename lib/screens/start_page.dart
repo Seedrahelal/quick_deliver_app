@@ -55,16 +55,9 @@ class _StartPageState extends State<StartPage>
                     return Opacity(
                       opacity: _textAnimation.value,
                       child: const Text(
-                        "  Hi , Welcome to   \n       Quick Deliver App ",
+                        "    Hi , Welcome to      \n        Quick Deliver App   ",
                         style: TextStyle(
-                            shadows: [
-                              BoxShadow(
-                                  color: Color.fromARGB(255, 251, 131, 3),
-                                  blurRadius: 30,
-                                  spreadRadius: 20)
-                            ],
                             color: Colors.white,
-                            fontFamily: 'Pacifico',
                             fontSize: 35,
                             fontWeight: FontWeight.bold),
                       ),
@@ -85,12 +78,6 @@ class _StartPageState extends State<StartPage>
                       FontAwesomeIcons.personWalkingArrowRight,
                       size: 70,
                       color: Colors.white,
-                      shadows: [
-                        BoxShadow(
-                            color: Color.fromARGB(255, 251, 131, 3),
-                            blurRadius: 30,
-                            spreadRadius: 20)
-                      ],
                     )),
               )
             ],
