@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:quick_deliver/screens/view_store_page.dart';
 import 'package:quick_deliver/widgets/custom_card.dart';
 
@@ -9,28 +8,13 @@ class StorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 30),
       children: [
-        Row(
-          children: [
-            const SizedBox(width: 16),
-            const Text(
-              'Find Stores Here ....',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(width: 16),
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(FontAwesomeIcons.searchengin, size: 32))
-          ],
-        ),
-        const SizedBox(height: 26),
         CustomCard(
             boxShadow: const [
-                        BoxShadow(
-                            color: Color.fromARGB(255, 248, 169, 84),
-                            blurRadius: 30)
-                      ],
+              BoxShadow(
+                  color: Color.fromARGB(255, 248, 169, 84), blurRadius: 12)
+            ],
             height: 260,
             width: 260,
             widthCard: 250,
@@ -42,55 +26,55 @@ class StorePage extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) => const ViewStorePage()));
             }),
-        CustomCard(boxShadow: const [
-                        BoxShadow(
-                            color: Color.fromARGB(255, 248, 169, 84),
-                            blurRadius: 30)
-                      ],
+        CustomCard(
+            boxShadow: const [
+              BoxShadow(
+                  color: Color.fromARGB(255, 248, 169, 84), blurRadius: 12)
+            ],
             height: 260,
             width: 260,
             widthCard: 250,
             name: 'Abu Abdo juices',
             photoPath: 'assets/store/images.jpg',
             onTap: () {}),
-        CustomCard(boxShadow: const [
-                        BoxShadow(
-                            color: Color.fromARGB(255, 248, 169, 84),
-                            blurRadius: 30)
-                      ],
+        CustomCard(
+            boxShadow: const [
+              BoxShadow(
+                  color: Color.fromARGB(255, 248, 169, 84), blurRadius: 12)
+            ],
             height: 260,
             width: 260,
             widthCard: 250,
             name: 'Abu Abdo juices',
             photoPath: 'assets/store/images.jpg',
             onTap: () {}),
-        CustomCard(boxShadow: const [
-                        BoxShadow(
-                            color: Color.fromARGB(255, 248, 169, 84),
-                            blurRadius: 30)
-                      ],
+        CustomCard(
+            boxShadow: const [
+              BoxShadow(
+                  color: Color.fromARGB(255, 248, 169, 84), blurRadius: 12)
+            ],
             height: 260,
             width: 260,
             widthCard: 250,
             name: 'Abu Abdo juices',
             photoPath: 'assets/store/images.jpg',
             onTap: () {}),
-        CustomCard(boxShadow: const [
-                        BoxShadow(
-                            color: Color.fromARGB(255, 248, 169, 84),
-                            blurRadius: 30)
-                      ],
+        CustomCard(
+            boxShadow: const [
+              BoxShadow(
+                  color: Color.fromARGB(255, 248, 169, 84), blurRadius: 12)
+            ],
             height: 260,
             width: 260,
             widthCard: 250,
             name: 'Abu Abdo juices',
             photoPath: 'assets/store/images.jpg',
             onTap: () {}),
-        CustomCard(boxShadow: const [
-                        BoxShadow(
-                            color: Color.fromARGB(255, 248, 169, 84),
-                            blurRadius: 30)
-                      ],
+        CustomCard(
+            boxShadow: const [
+              BoxShadow(
+                  color: Color.fromARGB(255, 248, 169, 84), blurRadius: 12)
+            ],
             height: 260,
             width: 260,
             widthCard: 250,

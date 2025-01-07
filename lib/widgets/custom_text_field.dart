@@ -39,7 +39,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             decoration: InputDecoration(
                 hintText: widget.hint,
                 hintStyle: const TextStyle(
-                    color: Color.fromARGB(255, 158, 83, 3), fontSize: 18),
+                    color: Color.fromARGB(255, 173, 91, 3), fontSize: 18),
                 border: buildBorder(),
                 enabledBorder: buildBorder(),
                 focusedBorder:

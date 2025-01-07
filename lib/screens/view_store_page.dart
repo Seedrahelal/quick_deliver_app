@@ -13,9 +13,10 @@ class ViewStorePage extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(16),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Abu Abdo juices',
+                '--> Abu Abdo juices',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 3, 46, 116),
@@ -26,7 +27,25 @@ class ViewStorePage extends StatelessWidget {
               SliderView(),
               SizedBox(height: 40),
               Text(
-                'One of the oldest juice shops in Damascus🍎\nand a distinctive tourist attraction❤️\n(Salhiya) opposite the police station 0114444030\n(Kfarsouseh) Damaskino Mall 0112166333 ',
+                '* Description : One of the oldest juice shops in Damascus🍎\nand a distinctive tourist attraction❤️',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 3, 47, 122),
+                  fontSize: 16,
+                ),
+              ),
+              SizedBox(height: 6),
+              Text(
+                '* Location :(Salhiya) opposite the police station',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 3, 47, 122),
+                  fontSize: 16,
+                ),
+              ),
+              SizedBox(height: 6),
+              Text(
+                '* Phone Number :0114444030',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Color.fromARGB(255, 3, 47, 122),

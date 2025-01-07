@@ -11,6 +11,8 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
         color: Color.fromARGB(255, 18, 42, 82),
         boxShadow: [
           BoxShadow(
@@ -28,10 +30,10 @@ class CustomAppBar extends StatelessWidget {
         title: Text(
           textTitle,
           style: const TextStyle(
-              fontSize: 30,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              ),
+            fontSize: 30,
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         leading: Padding(
           padding: const EdgeInsets.only(left: 14),

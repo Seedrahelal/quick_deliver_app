@@ -5,9 +5,14 @@ sealed class UserState {}
 
 final class UserInitial extends UserState {}
 
+final class UploadProfilePic extends UserState {}
+
 final class LoginLoading extends UserState {}
 
-final class LoginSuccess extends UserState {}
+class LoginSuccess extends UserState {
+  final String token;
+  LoginSuccess({required this.token});
+}
 
 final class LoginFailure extends UserState {
   final String errorMessage;

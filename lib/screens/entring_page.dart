@@ -49,34 +49,41 @@ class _EntringPageState extends State<EntringPage>
             builder: (context, child) {
               return Opacity(
                 opacity: textOpacity.value,
-                child: Column(
-                  children: [
-                    const SizedBox(height: 100),
-                    const Text(
-                        "All  Your  Requests         \n        Are  About  Us😍 ",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold)),
-                    const SizedBox(height: 320),
-                    CustomButton(
-                      text: 'Login',
-                      colorText: Colors.white,
-                      color: kListColor,
-                      onTap: () {
-                        login(context);
-                      },
-                    ),
-                    const SizedBox(height: 25),
-                    CustomButton(
-                      text: 'Register',
-                      colorText: Colors.white,
-                      color: kListColor,
-                      onTap: () {
-                        register(context);
-                      },
-                    )
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: 24, right: 16, top: 25, bottom: 70),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 80),
+                      const Text("All  Your  Requests\nAre  About  Us   ",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold)),
+                      const Spacer(flex: 1),
+                      CustomButton(
+                        text: 'Login',
+                        height: 62,
+                        width: 170,
+                        colorText: Colors.white,
+                        color: kListColor,
+                        onTap: () {
+                          login(context);
+                        },
+                      ),
+                      const SizedBox(height: 25),
+                      CustomButton(
+                        text: 'Register',
+                        height: 62,
+                        width: 170,
+                        colorText: Colors.white,
+                        color: kListColor,
+                        onTap: () {
+                          register(context);
+                        },
+                      )
+                    ],
+                  ),
                 ),
               );
             }),

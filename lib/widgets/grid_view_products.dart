@@ -19,7 +19,12 @@ class GridViewProducts extends StatelessWidget {
             mainAxisSpacing: 4),
         itemCount: 6,
         itemBuilder: (context, index) => CustomCard(
-          boxBorder: Border.all(width: 3,color: const Color.fromARGB(255, 196, 104, 6)),
+              boxShadow: const [
+                BoxShadow(
+                    color: Color.fromARGB(255, 248, 169, 84), blurRadius: 5)
+              ],
+              boxBorder: Border.all(
+                  width: 3, color: const Color.fromARGB(255, 196, 104, 6)),
               height: 240,
               width: 200,
               widthCard: 170,

@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:quick_deliver/helper/constants.dart';
 
 class SliderView extends StatelessWidget {
   const SliderView({
@@ -12,6 +11,9 @@ class SliderView extends StatelessWidget {
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
+          boxShadow: const [
+            BoxShadow(color: Color.fromARGB(255, 248, 169, 84), blurRadius: 10)
+          ],
           border: Border.all(
               color: const Color.fromARGB(255, 196, 104, 6), width: 3),
           color: const Color.fromARGB(255, 235, 180, 122),

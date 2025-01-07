@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-const kPrimaryColor = Color(0xff516585);
+const kPrimaryColor = Color.fromARGB(255, 81, 101, 133);
 const kListColor = [
   Color.fromARGB(255, 111, 165, 252),
   Color.fromARGB(255, 8, 43, 100),

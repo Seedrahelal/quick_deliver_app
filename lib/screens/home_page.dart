@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:quick_deliver/screens/cart_page.dart';
 import 'package:quick_deliver/screens/settings_page.dart';
 import 'package:quick_deliver/screens/store_page.dart';
 import 'package:quick_deliver/widgets/custom_app_bar.dart';
@@ -13,15 +14,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  final List<Widget> _pages = [const StorePage(), Container(), Container()];
+  final List<Widget> _pages = [const StorePage(), Container(), const CartPage()];
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(70),
-          child: CustomAppBar(textTitle: 'Quick Deliver'),
+          preferredSize: Size.fromHeight(67),
+          child: CustomAppBar(textTitle: 'Quick  Deliver'),
         ),
         drawer: const SettingsPage(),
         body: AnimatedSwitcher(

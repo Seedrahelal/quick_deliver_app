@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quick_deliver/helper/constants.dart';
 
 class PickWidget extends StatelessWidget {
   const PickWidget(
@@ -12,21 +11,21 @@ class PickWidget extends StatelessWidget {
       required this.bottom,
       required this.left});
 
-  final String photoAvatar;
+  final ImageProvider photoAvatar;
   final dynamic onTap;
   final dynamic iconAvatar;
   final double width;
   final double height;
   final double bottom;
   final double left;
-  
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: width,
       height: height,
       child: CircleAvatar(
-        backgroundImage: AssetImage(photoAvatar),
+        backgroundImage: photoAvatar,
         child: Stack(
           children: [
             Positioned(
@@ -38,16 +37,16 @@ class PickWidget extends StatelessWidget {
                   height: 45,
                   width: 45,
                   decoration: BoxDecoration(
-                    color: kPrimaryColor,
+                    color: Colors.white,
                     border: Border.all(
-                      color: Colors.white,
-                      width: 2,
+                      color: const Color.fromARGB(255, 173, 91, 3),
+                      width: 3,
                     ),
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Icon(
                     iconAvatar,
-                    color: Colors.white,
+                    color: const Color.fromARGB(255, 173, 91, 3),
                     size: 30,
                   ),
                 ),

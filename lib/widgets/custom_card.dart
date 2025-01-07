@@ -9,7 +9,8 @@ class CustomCard extends StatelessWidget {
       required this.width,
       required this.height,
       required this.widthCard,
-      this.boxShadow,this.boxBorder});
+      this.boxShadow,
+      this.boxBorder});
   final String name;
   final String photoPath;
   final dynamic onTap;
@@ -32,7 +33,8 @@ class CustomCard extends StatelessWidget {
                   clipBehavior: Clip.antiAlias,
                   width: width,
                   height: height,
-                  decoration: BoxDecoration(border:boxBorder ,
+                  decoration: BoxDecoration(
+                      border: boxBorder,
                       borderRadius: BorderRadius.circular(30),
                       boxShadow: boxShadow),
                   child: Image.asset(photoPath, fit: BoxFit.cover)),
@@ -54,7 +56,10 @@ class CustomCard extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 16, top: 10),
                     child: Text(
                       name,
-                      style: const TextStyle(color: Colors.white, fontSize: 26),
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),

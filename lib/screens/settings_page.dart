@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:quick_deliver/helper/constants.dart';
+import 'package:quick_deliver/screens/my_request.dart';
+import 'package:quick_deliver/screens/profile_page.dart';
 import 'package:quick_deliver/widgets/custom_button.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -37,7 +39,7 @@ class SettingsPage extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 60),
+          const SizedBox(height: 35),
           ListTile(
               leading: const Icon(FontAwesomeIcons.idCard,
                   color: Colors.white, size: 32),
@@ -46,7 +48,13 @@ class SettingsPage extends StatelessWidget {
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.bold)),
-              onTap: () {}),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return const ProfilePage();
+                  },
+                ));
+              }),
           const SizedBox(height: 35),
           ListTile(
               leading: const Icon(FontAwesomeIcons.gratipay,
@@ -57,16 +65,20 @@ class SettingsPage extends StatelessWidget {
                       fontSize: 16,
                       fontWeight: FontWeight.bold)),
               onTap: () {}),
-          //const SizedBox(height: 35),
-          // ListTile(
-          //     leading: const Icon(FontAwesomeIcons.cartPlus,
-          //         color: Colors.white, size: 32),
-          //     title: const Text('Shopping Cart',
-          //         style: TextStyle(
-          //             color: Colors.white,
-          //             fontSize: 16,
-          //             fontWeight: FontWeight.bold)),
-          //     onTap: () {}),
+          const SizedBox(height: 35),
+          ListTile(
+              leading: const Icon(FontAwesomeIcons.jediOrder,
+                  color: Colors.white, size: 32),
+              title: const Text('My Requests',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold)),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const MyRequest();
+                }));
+              }),
           const SizedBox(height: 35),
           ListTile(
               leading: const Icon(FontAwesomeIcons.globe,
@@ -77,10 +89,10 @@ class SettingsPage extends StatelessWidget {
                       fontSize: 16,
                       fontWeight: FontWeight.bold)),
               onTap: () {}),
-          const SizedBox(height: 110),
+          const SizedBox(height: 60),
           const Center(
             child: CustomButton(
-                text: 'Log Out',
+                text: 'Log Out',height: 62,width: 170,
                 color: [
                   Color.fromARGB(255, 111, 165, 252),
                   Color.fromARGB(255, 37, 65, 109),

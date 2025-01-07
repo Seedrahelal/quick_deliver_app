@@ -46,41 +46,45 @@ class _StartPageState extends State<StartPage>
                     AssetImage('assets/images/photo_2024-12-17_12-18-09.jpg'),
                 fit: BoxFit.cover),
           ),
-          child: Column(
-            children: [
-              const SizedBox(height: 40),
-              AnimatedBuilder(
-                  animation: _textAnimation,
-                  builder: (context, child) {
-                    return Opacity(
-                      opacity: _textAnimation.value,
-                      child: const Text(
-                        "    Hi , Welcome to      \n        Quick Deliver App   ",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 35,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    );
-                  }),
-              const SizedBox(height: 460),
-              SlideTransition(
-                position: _iconAnimation,
-                child: IconButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) {
-                          return const EntringPage();
-                        },
-                      ));
-                    },
-                    icon: const Icon(
-                      FontAwesomeIcons.personWalkingArrowRight,
-                      size: 70,
-                      color: Colors.white,
-                    )),
-              )
-            ],
+          child: Padding(
+            padding:
+                const EdgeInsets.only(left: 24, right: 16, top: 25, bottom: 70),
+            child: Column(
+              children: [
+                AnimatedBuilder(
+                    animation: _textAnimation,
+                    builder: (context, child) {
+                      return Opacity(
+                        opacity: _textAnimation.value,
+                        child: const Text(
+                          "Hi ,\nWelcome  to\n  Quick  Deliver  App   ",
+                          style: TextStyle(
+                              fontFamily: 'Pacifico',
+                              color: Colors.white,
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      );
+                    }),
+                const Spacer(flex: 1),
+                SlideTransition(
+                  position: _iconAnimation,
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const EntringPage();
+                          },
+                        ));
+                      },
+                      icon: const Icon(
+                        FontAwesomeIcons.personWalkingArrowRight,
+                        size: 70,
+                        color: Colors.white,
+                      )),
+                )
+              ],
+            ),
           ),
         ),
       ),

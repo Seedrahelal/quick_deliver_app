@@ -49,6 +49,8 @@ class _MapScreenState extends State<MapScreen> {
     }
 
     location.onLocationChanged.listen((LocationData newLocation) {
+      if (!mounted) return;
+
       setState(() {
         currentLocation = newLocation;
       });
@@ -56,6 +58,8 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   Future<void> _getRoute(LatLng destination) async {
+    if (!mounted) return;
+
     if (currentLocation == null) return;
 
     final start =
@@ -88,6 +92,7 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   void _addDestinationMarker(LatLng point) {
+    if (!mounted) return;
     setState(() {
       markers.clear();
       markers.add(
@@ -114,15 +119,22 @@ class _MapScreenState extends State<MapScreen> {
             title: const Text(
               'Street Map',
               style: TextStyle(
-                shadows: [
-                  BoxShadow(
-                      color: Color.fromARGB(255, 251, 131, 3),
-                      blurRadius: 10,
-                      spreadRadius: 10)
-                ],
                 fontSize: 30,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
+              ),
+            ),
+            bottom: const PreferredSize(
+              preferredSize: Size.fromHeight(30.0),
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 6),
+                child: Text(
+                  'Tap on the map to select your location.',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ),
@@ -171,7 +183,10 @@ class _MapScreenState extends State<MapScreen> {
               );
             }
           },
-          child: const Icon(Icons.my_location),
+          child: const Icon(
+            Icons.my_location,
+            color: Colors.white,
+          ),
         ),
       ),
     );

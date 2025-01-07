@@ -55,13 +55,6 @@ void login(BuildContext context) {
                       'If you have an account...',
                       style: TextStyle(
                         color: Color.fromARGB(255, 3, 46, 116),
-                        shadows: [
-                          BoxShadow(
-                            color: Color.fromARGB(255, 251, 131, 3),
-                            blurRadius: 30,
-                            spreadRadius: 20,
-                          ),
-                        ],
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
@@ -84,7 +77,7 @@ void login(BuildContext context) {
                             color: Color.fromARGB(255, 3, 46, 116),
                           )
                         : CustomButton(
-                            text: 'Login',
+                            text: 'Login',height: 62,width: 170,
                             color: kListColor,
                             colorText: Colors.white,
                             onTap: () {
