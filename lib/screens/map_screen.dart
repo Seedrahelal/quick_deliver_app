@@ -9,7 +9,6 @@ import 'package:quick_deliver/helper/constants.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({super.key});
-
   @override
   State<MapScreen> createState() => _MapScreenState();
 }
@@ -29,7 +28,6 @@ class _MapScreenState extends State<MapScreen> {
 
   Future<void> _getCurrentLocation() async {
     var location = Location();
-
     try {
       var userLocation = await location.getLocation();
       setState(() {
@@ -47,10 +45,8 @@ class _MapScreenState extends State<MapScreen> {
     } on Exception {
       currentLocation = null;
     }
-
     location.onLocationChanged.listen((LocationData newLocation) {
       if (!mounted) return;
-
       setState(() {
         currentLocation = newLocation;
       });
@@ -59,16 +55,13 @@ class _MapScreenState extends State<MapScreen> {
 
   Future<void> _getRoute(LatLng destination) async {
     if (!mounted) return;
-
     if (currentLocation == null) return;
-
     final start =
         LatLng(currentLocation!.latitude!, currentLocation!.longitude!);
     final response = await http.get(
       Uri.parse(
           'https://api.openrouteservice.org/v2/directions/driving-car?api_key=$orsApiKey&start=${start.longitude},${start.latitude}&end=${destination.longitude},${destination.latitude}'),
     );
-
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       final List<dynamic> coords =
@@ -91,20 +84,43 @@ class _MapScreenState extends State<MapScreen> {
     }
   }
 
-  void _addDestinationMarker(LatLng point) {
-    if (!mounted) return;
-    setState(() {
-      markers.clear();
-      markers.add(
-        Marker(
-          width: 80.0,
-          height: 80.0,
-          point: point,
-          child: const Icon(Icons.location_on, color: Colors.red, size: 40.0),
-        ),
+  Future<void> _getAddressFromCoordinates(LatLng point) async {
+    final url =
+        'https://nominatim.openstreetmap.org/reverse?format=json&lat=${point.latitude}&lon=${point.longitude}';
+
+    try {
+      final response = await http.get(
+        Uri.parse(url),
+        headers: {
+          'accept-language': 'en',
+        },
       );
-    });
-    Navigator.pop(context, point);
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        final String address = data['display_name'];
+        setState(() {
+          markers.clear();
+          markers.add(
+            Marker(
+              width: 80.0,
+              height: 80.0,
+              point: point,
+              child:
+                  const Icon(Icons.location_on, color: Colors.red, size: 40.0),
+            ),
+          );
+        });
+        Navigator.pop(context, address);
+      } else {
+        print('Failed to fetch address');
+      }
+    } catch (e) {
+      print('Error fetching address: $e');
+    }
+  }
+
+  void _addDestinationMarker(LatLng point) {
+    _getAddressFromCoordinates(point);
   }
 
   @override

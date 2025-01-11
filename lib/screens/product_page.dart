@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:quick_deliver/models/product_models.dart';
 
-void productPage(BuildContext context) {
+void productPage(BuildContext context, ProductModels product) {
   showDialog(
     context: context,
     builder: (context) {
@@ -21,13 +22,11 @@ void productPage(BuildContext context) {
             padding:
                 const EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 10),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Name Product',
-                  style: TextStyle(
+                Text(
+                  product.name,
+                  style: const TextStyle(
                     wordSpacing: 8,
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 3, 47, 122),
@@ -54,40 +53,40 @@ void productPage(BuildContext context) {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(35),
-                    child: Image.asset(
-                      'assets/store/photo_2024-12-22_15-16-53.jpg',
+                    child: Image.network(
+                      product.productPicture,
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
                 const SizedBox(height: 30),
-                const Text(
-                  '* Description : It lasts for a long time and is highly efficient',
-                  style: TextStyle(
+                Text(
+                  '* Description: ${product.description}',
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 3, 47, 122),
                     fontSize: 18,
                   ),
                 ),
-                const Text(
-                  '* ID : 154851',
-                  style: TextStyle(
+                Text(
+                  '* ID : ${product.id.toString()}',
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 3, 47, 122),
                     fontSize: 18,
                   ),
                 ),
-                const Text(
-                  '* Price : 60000',
-                  style: TextStyle(
+                Text(
+                  '* Price: ${product.price.toStringAsFixed(2)}',
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 3, 47, 122),
                     fontSize: 18,
                   ),
                 ),
-                const Text(
-                  '* Number Of Product : 20',
-                  style: TextStyle(
+                Text(
+                  '* Number Of Product : ${product.stockQuantity}',
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 3, 47, 122),
                     fontSize: 18,
@@ -191,54 +190,3 @@ void productPage(BuildContext context) {
     },
   );
 }
-
-
-
-
-
-
-
-//  void _showDeleteConfirmationDialog(BuildContext context) {
-//     showDialog(
-//       context: context,
-//       builder: (BuildContext context) {
-//         return AlertDialog(
-//           elevation: 100,
-//           shadowColor: const Color(0xffC678D7),
-//           shape: RoundedRectangleBorder(
-//             borderRadius: BorderRadius.circular(15),
-//           ),
-//           title: const Text(
-//             'Confirm Deletion....!',
-//             style: TextStyle(fontSize: 23),
-//           ),
-//           content: const Text(
-//             'Are you sure you want to delete this note ??',
-//             style: TextStyle(fontSize: 17),
-//           ),
-//           actions: <Widget>[
-//             TextButton(
-//               child: const Text(
-//                 'Cancel',
-//                 style: TextStyle(fontSize: 18),
-//               ),
-//               onPressed: () {
-//                 Navigator.of(context).pop();
-//               },
-//             ),
-//             TextButton(
-//               child: const Text(
-//                 'Delete',
-//                 style: TextStyle(fontSize: 18),
-//               ),
-//               onPressed: () {
-//                 note.delete();
-//                 BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-//                 Navigator.of(context).pop();
-//               },
-//             ),
-//           ],
-//         );
-//       },
-//     );
-//   }

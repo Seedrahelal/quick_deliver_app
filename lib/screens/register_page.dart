@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:quick_deliver/cubit/user_cubit.dart';
 import 'package:quick_deliver/helper/constants.dart';
-import 'package:quick_deliver/helper/show_snack_bar.dart';
+import 'package:quick_deliver/helper/show_top_message.dart';
 import 'package:quick_deliver/screens/home_page.dart';
 import 'package:quick_deliver/screens/map_screen.dart';
 import 'package:quick_deliver/widgets/custom_button.dart';
@@ -12,6 +12,7 @@ import 'package:quick_deliver/widgets/custom_text_field.dart';
 import 'package:quick_deliver/widgets/pick_widget.dart';
 
 void register(BuildContext context) {
+  final parentContext = context;
   final firstNameController = TextEditingController();
   final lastNameController = TextEditingController();
   final phoneController = TextEditingController();
@@ -36,13 +37,13 @@ void register(BuildContext context) {
           return BlocConsumer<UserCubit, UserState>(
             listener: (context, state) {
               if (state is RegisterSuccess) {
-                showSnackBar(context, 'Registration Successful');
+                showTopMessage(context, 'Registration Successful');
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const HomePage()),
                 );
               } else if (state is RegisterFailure) {
-                showSnackBar(context, state.errorMessage);
+                showTopMessage(context, state.errorMessage);
               }
             },
             builder: (context, state) {
@@ -153,8 +154,12 @@ void register(BuildContext context) {
                           const SizedBox(height: 40),
                           Center(
                             child: state is RegisterLoading
-                                ? const CircularProgressIndicator()
-                                : CustomButton(height: 62,width: 170,
+                                ? const CircularProgressIndicator(
+                                    color: Color.fromARGB(255, 3, 46, 116),
+                                  )
+                                : CustomButton(
+                                    height: 62,
+                                    width: 170,
                                     text: 'Register',
                                     color: kListColor,
                                     colorText: Colors.white,
@@ -182,7 +187,7 @@ void register(BuildContext context) {
                                                 image: selectImage!,
                                               );
                                         } else {
-                                          showSnackBar(
+                                          showTopMessage(
                                             context,
                                             'Please select an image and location.',
                                           );

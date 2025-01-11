@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:quick_deliver/cubit/stores_cubit.dart';
 import 'package:quick_deliver/cubit/user_cubit.dart';
+import 'package:quick_deliver/screens/entring_page.dart';
 import 'package:quick_deliver/screens/start_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,11 +23,17 @@ class QuickDeliver extends StatelessWidget {
       providers: [
         BlocProvider<UserCubit>(
           create: (context) => UserCubit(),
+        ),
+        BlocProvider<StoresCubit>(
+          create: (context) => StoresCubit(),
         )
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: StartPage(),
+        routes: {
+          'entring': (context) => const EntringPage(),
+        },
+        home: const StartPage(),
       ),
     );
   }

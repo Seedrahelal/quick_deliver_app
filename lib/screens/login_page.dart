@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_deliver/cubit/user_cubit.dart';
 import 'package:quick_deliver/helper/constants.dart';
-import 'package:quick_deliver/helper/show_snack_bar.dart';
+import 'package:quick_deliver/helper/show_top_message.dart';
 import 'package:quick_deliver/screens/home_page.dart';
 import 'package:quick_deliver/widgets/custom_button.dart';
 import 'package:quick_deliver/widgets/custom_text_field.dart';
 
 void login(BuildContext context) {
+  final parentContext = context;
   final phoneController = TextEditingController();
   final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -33,15 +34,13 @@ void login(BuildContext context) {
           child: BlocConsumer<UserCubit, UserState>(
             listener: (context, state) {
               if (state is LoginSuccess) {
-                showSnackBar(context, 'Login Successful');
+                showTopMessage(parentContext, 'Login Successful');
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomePage(),
-                  ),
+                  MaterialPageRoute(builder: (context) => const HomePage()),
                 );
               } else if (state is LoginFailure) {
-                showSnackBar(context, state.errorMessage);
+                showTopMessage(parentContext, state.errorMessage);
               }
             },
             builder: (context, state) {
@@ -77,7 +76,9 @@ void login(BuildContext context) {
                             color: Color.fromARGB(255, 3, 46, 116),
                           )
                         : CustomButton(
-                            text: 'Login',height: 62,width: 170,
+                            text: 'Login',
+                            height: 62,
+                            width: 170,
                             color: kListColor,
                             colorText: Colors.white,
                             onTap: () {

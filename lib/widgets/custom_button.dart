@@ -7,15 +7,15 @@ class CustomButton extends StatelessWidget {
       required this.color,
       required this.colorText,
       required this.height,
-      required this.width,this.textSize=30});
+      required this.width,
+      this.textSize = 30});
   final VoidCallback? onTap;
   final String text;
   final List<Color> color;
   final Color colorText;
   final double height;
   final double width;
-    final double textSize;
-
+  final double textSize;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,9 @@ class CustomButton extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-                fontSize: textSize, color: colorText, fontWeight: FontWeight.bold),
+                fontSize: textSize,
+                color: colorText,
+                fontWeight: FontWeight.bold),
           ),
         ),
       ),

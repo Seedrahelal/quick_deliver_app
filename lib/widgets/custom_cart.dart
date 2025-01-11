@@ -60,8 +60,9 @@ class _CustomCartState extends State<CustomCart> {
                       IconButton(
                           onPressed: () {
                             setState(() {
-                              if(quantity>0){
-                              quantity--;}
+                              if (quantity > 0) {
+                                quantity--;
+                              }
                             });
                           },
                           icon: const Icon(

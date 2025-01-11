@@ -19,7 +19,7 @@ class _CustomRequestState extends State<CustomRequest> {
       ),
       height: 130,
       width: double.infinity,
-      margin: const EdgeInsets.only(left: 16 , right:  16 , top: 10 , bottom: 10),
+      margin: const EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
       padding: const EdgeInsets.only(top: 10),
       child: const Column(
         children: [
@@ -27,7 +27,7 @@ class _CustomRequestState extends State<CustomRequest> {
             "productName",
             style: TextStyle(
               color: Color.fromARGB(255, 37, 65, 109),
-              fontWeight: FontWeight.bold ,
+              fontWeight: FontWeight.bold,
             ),
           ),
           Text(

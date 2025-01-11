@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:quick_deliver/cubit/user_cubit.dart';
+import 'package:quick_deliver/helper/show_top_message.dart';
 import 'package:quick_deliver/screens/cart_page.dart';
 import 'package:quick_deliver/screens/settings_page.dart';
 import 'package:quick_deliver/screens/store_page.dart';
@@ -14,7 +17,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  final List<Widget> _pages = [const StorePage(), Container(), const CartPage()];
+  final List<Widget> _pages = [
+    const StorePage(),
+    const CartPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,18 @@ class _HomePageState extends State<HomePage> {
           preferredSize: Size.fromHeight(67),
           child: CustomAppBar(textTitle: 'Quick  Deliver'),
         ),
-        drawer: const SettingsPage(),
+        drawer: BlocConsumer<UserCubit, UserState>(
+          listener: (context, state) {
+            if (state is LogoutSuccess) {
+              Navigator.pushReplacementNamed(context, 'entring');
+            } else if (state is LogoutFailure) {
+              showTopMessage(context, state.errorMessage);
+            }
+          },
+          builder: (context, state) {
+            return const SettingsPage();
+          },
+        ),
         body: AnimatedSwitcher(
           duration: const Duration(milliseconds: 500),
           switchInCurve: Curves.easeInOutCubic,
@@ -34,9 +51,7 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(35),
-                topRight: Radius.circular(35)
-                ),
+                topLeft: Radius.circular(35), topRight: Radius.circular(35)),
             color: Color.fromARGB(255, 18, 42, 82),
             boxShadow: [
               BoxShadow(
@@ -48,7 +63,7 @@ class _HomePageState extends State<HomePage> {
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: List.generate(3, (index) {
+            children: List.generate(2, (index) {
               bool isSelected = _currentIndex == index;
               return GestureDetector(
                 onTap: () {
@@ -115,11 +130,10 @@ IconData _getIcon(int index) {
     case 0:
       return FontAwesomeIcons.shop;
     case 1:
-      return FontAwesomeIcons.house;
-    case 2:
       return FontAwesomeIcons.cartPlus;
+
     default:
-      return FontAwesomeIcons.house;
+      return FontAwesomeIcons.shop;
   }
 }
 
@@ -128,9 +142,8 @@ String _getLabel(int index) {
     case 0:
       return 'Store';
     case 1:
-      return 'Home';
-    case 2:
       return 'Cart';
+
     default:
       return '';
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:quick_deliver/cubit/user_cubit.dart';
 import 'package:quick_deliver/helper/constants.dart';
 import 'package:quick_deliver/screens/my_request.dart';
 import 'package:quick_deliver/screens/profile_page.dart';
@@ -51,7 +53,10 @@ class SettingsPage extends StatelessWidget {
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
-                    return const ProfilePage();
+                    return const ProfilePage(
+                      token:
+                          '1|09Mwc8YEZJQf4hNcJTPQAAMVd4XqmA4ewllrRJuHc9fd4470',
+                    );
                   },
                 ));
               }),
@@ -90,13 +95,39 @@ class SettingsPage extends StatelessWidget {
                       fontWeight: FontWeight.bold)),
               onTap: () {}),
           const SizedBox(height: 60),
-          const Center(
+          Center(
             child: CustomButton(
-                text: 'Log Out',height: 62,width: 170,
-                color: [
+                text: 'Log Out',
+                height: 62,
+                width: 170,
+                color: const [
                   Color.fromARGB(255, 111, 165, 252),
                   Color.fromARGB(255, 37, 65, 109),
                 ],
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: const Text('Log Out'),
+                      content: const Text('Are you sure you want to log out?'),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: const Text('Cancel'),
+                        ),
+                        TextButton(
+                          onPressed: () async {
+                            final token =
+                                '10|HYDn12dpS7HXkuiVetZm0ZXPemBhbBTlG6we20Xd58ee3b4f';
+                            context.read<UserCubit>().logout(token);
+                            Navigator.pop(context);
+                          },
+                          child: const Text('Log Out'),
+                        ),
+                      ],
+                    ),
+                  );
+                },
                 colorText: Colors.white),
           )
         ],
