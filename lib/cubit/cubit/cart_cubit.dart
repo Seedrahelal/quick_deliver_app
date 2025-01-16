@@ -5,16 +5,22 @@ import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 import 'package:quick_deliver/helper/api_constants.dart';
 import 'package:quick_deliver/models/order_model.dart';
+import 'package:quick_deliver/models/product_models.dart';
 
 part 'cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {
   CartCubit() : super(CartInitial());
 
-  Future<void> addProductToCart(
-      {required String token,
-      required int productId,
-      required int quantity}) async {
+  final List<Map<String, dynamic>> _productsInCart = [];
+  List<Map<String, dynamic>> get productsInCart =>
+      List.unmodifiable(_productsInCart);
+
+  Future<void> addProductToCart({
+    required String token,
+    required ProductModels product,
+    required int quantity,
+  }) async {
     emit(CartLoading());
     final url = Uri.parse(EndPoint.storeOrderUrl);
     try {
@@ -25,7 +31,7 @@ class CartCubit extends Cubit<CartState> {
           'Content-Type': 'application/json',
         },
         body: jsonEncode({
-          'product_id': productId,
+          'product_id': product.id,
           'quantity': quantity,
         }),
       );
@@ -33,13 +39,85 @@ class CartCubit extends Cubit<CartState> {
       print('Response body: ${response.body}');
       if (response.statusCode == 200 || response.statusCode == 201) {
         final data = jsonDecode(response.body);
-        emit(CartSuccess(message: 'Product added to cart successfully!'));
+        _productsInCart.add({
+          'product': product,
+          'quantity': data['quantity'],
+          'totalPrice': data['total_price'],
+          'id': data['id']
+        });
+        emit(CartSuccess(
+          message: 'Product added to cart successfully!',
+          products: _productsInCart,
+        ));
       } else {
-        final error = jsonDecode(response.body)['message'] ?? 'Unknown error';
-        emit(CartFailure(errorMessage: error));
+        emit(CartFailure(errorMessage: 'Failed to add product to cart.'));
       }
     } catch (e) {
       emit(CartFailure(errorMessage: 'Error: $e'));
+    }
+  }
+
+  Future<void> updateProductQuantity({
+    required String token,
+    required int cartItemId,
+    required int newQuantity,
+  }) async {
+    emit(CartLoading());
+    try {
+      final response = await http.post(
+        Uri.parse('${EndPoint.updateOrderUrl}/$cartItemId'),
+        headers: {
+          'Authorization': 'Bearer $token',
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          'quantity': newQuantity,
+        }),
+      );
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final data = jsonDecode(response.body);
+        final index =
+            _productsInCart.indexWhere((item) => item['id'] == cartItemId);
+        if (index != -1) {
+          _productsInCart[index]['quantity'] = data['quantity'];
+          _productsInCart[index]['totalPrice'] = data['total_price'];
+          // _productsInCart[index]['id'] = data['id'];
+        }
+        emit(CartSuccess(
+          message: 'Product quantity updated successfully!',
+          products: _productsInCart,
+        ));
+      } else {
+        emit(CartFailure(errorMessage: 'Failed to update product quantity.'));
+      }
+    } catch (e) {
+      emit(CartFailure(errorMessage: 'Error: $e'));
+    }
+  }
+
+  Future<void> cancelOrder(String token, int orderId) async {
+    emit(CancelOrderLoading());
+    final url = Uri.parse('${EndPoint.cancelOrderUrl}$orderId');
+    try {
+      final response = await http.delete(
+        url,
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+      );
+      print('Response status: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      if (response.statusCode == 200) {
+        final message = jsonDecode(response.body)['message'];
+        emit(CancelOrderSuccess(message: message));
+      } else {
+        final error = jsonDecode(response.body)['message'] ?? 'Unknown error';
+        emit(CancelOrderFailure(errorMessage: error));
+      }
+    } catch (e) {
+      emit(CancelOrderFailure(errorMessage: 'Error: $e'));
     }
   }
 
@@ -71,38 +149,6 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
-  Future<void> updateOrder({
-    required String token,
-    required int orderId,
-    required int newQuantity,
-  }) async {
-    emit(UpdateOrderLoading());
-    final url = Uri.parse('${EndPoint.updateOrderUrl}$orderId');
-    try {
-      final response = await http.put(
-        url,
-        headers: {
-          'Authorization': 'Bearer $token',
-          'Content-Type': 'application/json',
-        },
-        body: jsonEncode({
-          'quantity': newQuantity,
-        }),
-      );
-      print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        emit(UpdateOrderSuccess(message: 'Order updated successfully.'));
-      } else {
-        final error = jsonDecode(response.body)['message'] ?? 'Unknown error';
-        emit(UpdateOrderFailure(errorMessage: error));
-      }
-    } catch (e) {
-      emit(UpdateOrderFailure(errorMessage: 'Error: $e'));
-    }
-  }
-
   Future<void> getOrders(String token) async {
     emit(OrdersLoading());
     final url = Uri.parse(EndPoint.getOrderUrl);
@@ -125,30 +171,6 @@ class CartCubit extends Cubit<CartState> {
       }
     } catch (e) {
       emit(OrdersFailure(errorMessage: 'Error: $e'));
-    }
-  }
-
-  Future<void> cancelOrder(String token, int orderId) async {
-    emit(CancelOrderLoading());
-    final url = Uri.parse('${EndPoint.cancelOrderUrl}$orderId');
-    try {
-      final response = await http.delete(
-        url,
-        headers: {
-          'Authorization': 'Bearer $token',
-        },
-      );
-      print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
-      if (response.statusCode == 200) {
-        final message = jsonDecode(response.body)['message'];
-        emit(CancelOrderSuccess(message: message));
-      } else {
-        final error = jsonDecode(response.body)['message'] ?? 'Unknown error';
-        emit(CancelOrderFailure(errorMessage: error));
-      }
-    } catch (e) {
-      emit(CancelOrderFailure(errorMessage: 'Error: $e'));
     }
   }
 }

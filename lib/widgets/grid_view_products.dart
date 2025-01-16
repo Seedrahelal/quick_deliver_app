@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quick_deliver/cubit/stores_cubit.dart';
+import 'package:quick_deliver/helper/api_constants.dart';
 import 'package:quick_deliver/screens/product_page.dart';
 import 'package:quick_deliver/widgets/custom_card.dart';
 
@@ -47,7 +48,7 @@ class GridViewProducts extends StatelessWidget {
                 width: 200,
                 widthCard: 170,
                 name: product.name,
-                photoPath: product.productPicture,
+                photoPath: '${EndPoint.url}${product.productPicture}',
                 onTap: () {
                   productPage(context, product);
                 },
@@ -64,44 +65,3 @@ class GridViewProducts extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-// class GridViewProducts extends StatelessWidget {
-//   final int storeId;
-
-//   const GridViewProducts({super.key, required this.storeId});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return BlocBuilder<StoresCubit, StoresState>(
-//       builder: (context, state) {
-//         if (state is ProductLoading) {
-//           return const Center(child: CircularProgressIndicator());
-//         } else if (state is ProductSuccess) {
-//           final products = state.products;
-//           return GridView.builder(
-//             shrinkWrap: true,
-//             physics: const NeverScrollableScrollPhysics(),
-//             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-//               crossAxisCount: 2,
-//               crossAxisSpacing: 10,
-//               mainAxisSpacing: 10,
-//               childAspectRatio: 0.75,
-//             ),
-//             itemCount: products.length,
-//             itemBuilder: (context, index) {
-//               final product = products[index];
-//               return ProductCard(product: product);
-//             },
-//           );
-//         } else if (state is ProductFailure) {
-//           return Center(child: Text('Error: ${state.errorMessage}'));
-//         }
-//         return const Center(child: Text('No products available'));
-//       },
-//     );
-//   }
-// }

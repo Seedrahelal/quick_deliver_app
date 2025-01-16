@@ -35,7 +35,7 @@ class StoresCubit extends Cubit<StoresState> {
   Future<void> getProducts(int storeId) async {
     emit(ProductLoading());
     try {
-      final url = Uri.parse(EndPoint.productUrl);
+      final url = Uri.parse('${EndPoint.productUrl}/$storeId');
       final response = await http.get(url);
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');

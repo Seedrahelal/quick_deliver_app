@@ -12,7 +12,11 @@ void showTopMessage(BuildContext context, String message) {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 3, 46, 116),
+            border: Border.all(
+              color: const Color.fromARGB(255, 196, 104, 6),
+              width: 3,
+            ),
+            color: const Color.fromARGB(255, 5, 72, 182),
             borderRadius: BorderRadius.circular(10),
             boxShadow: const [
               BoxShadow(

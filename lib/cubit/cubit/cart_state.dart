@@ -9,7 +9,9 @@ class CartLoading extends CartState {}
 
 class CartSuccess extends CartState {
   final String message;
-  CartSuccess({required this.message});
+  final List<Map<String, dynamic>> products;
+
+  CartSuccess({required this.message, required this.products});
 }
 
 class CartFailure extends CartState {
@@ -27,18 +29,6 @@ class ConfirmOrderSuccess extends CartState {
 class ConfirmOrderFailure extends CartState {
   final String errorMessage;
   ConfirmOrderFailure({required this.errorMessage});
-}
-
-class UpdateOrderLoading extends CartState {}
-
-class UpdateOrderSuccess extends CartState {
-  final String message;
-  UpdateOrderSuccess({required this.message});
-}
-
-class UpdateOrderFailure extends CartState {
-  final String errorMessage;
-  UpdateOrderFailure({required this.errorMessage});
 }
 
 class OrdersLoading extends CartState {}

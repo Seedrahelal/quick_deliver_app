@@ -11,14 +11,25 @@ class SliderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (imageUrls.isEmpty) {
+      return const Center(
+        child: Text(
+          'No images to display',
+          style: TextStyle(color: Colors.grey),
+        ),
+      );
+    }
+
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         boxShadow: const [
           BoxShadow(color: Color.fromARGB(255, 248, 169, 84), blurRadius: 10)
         ],
-        border:
-            Border.all(color: const Color.fromARGB(255, 196, 104, 6), width: 3),
+        border: Border.all(
+          color: const Color.fromARGB(255, 196, 104, 6),
+          width: 3,
+        ),
         color: const Color.fromARGB(255, 235, 180, 122),
         borderRadius: BorderRadius.circular(50),
       ),
@@ -30,6 +41,8 @@ class SliderView extends StatelessWidget {
           height: 200,
           width: double.infinity,
           fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) =>
+              const Icon(Icons.broken_image, size: 100),
         ),
         options: CarouselOptions(
           height: 220,
@@ -44,7 +57,6 @@ class SliderView extends StatelessWidget {
           autoPlayCurve: Curves.fastOutSlowIn,
           enlargeCenterPage: true,
           enlargeFactor: 0.3,
-          onPageChanged: (index, reason) {},
           scrollDirection: Axis.horizontal,
         ),
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:quick_deliver/cubit/user_cubit.dart';
+import 'package:quick_deliver/helper/api_constants.dart';
 import 'package:quick_deliver/helper/constants.dart';
 import 'package:quick_deliver/screens/my_request.dart';
 import 'package:quick_deliver/screens/profile_page.dart';
@@ -55,7 +56,7 @@ class SettingsPage extends StatelessWidget {
                   builder: (context) {
                     return const ProfilePage(
                       token:
-                          '1|09Mwc8YEZJQf4hNcJTPQAAMVd4XqmA4ewllrRJuHc9fd4470',
+                          '15|pVEH7KbSaCo00mnh01vSuqPnoz3RQaHosuHPAn15de68b862',
                     );
                   },
                 ));
@@ -117,8 +118,7 @@ class SettingsPage extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () async {
-                            final token =
-                                '10|HYDn12dpS7HXkuiVetZm0ZXPemBhbBTlG6we20Xd58ee3b4f';
+                            var token = EndPoint.userToken;
                             context.read<UserCubit>().logout(token);
                             Navigator.pop(context);
                           },

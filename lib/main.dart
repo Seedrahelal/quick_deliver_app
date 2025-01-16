@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:quick_deliver/cubit/cubit/cart_cubit.dart';
 import 'package:quick_deliver/cubit/stores_cubit.dart';
 import 'package:quick_deliver/cubit/user_cubit.dart';
 import 'package:quick_deliver/screens/entring_page.dart';
@@ -11,6 +12,7 @@ void main() {
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+
   runApp(const QuickDeliver());
 }
 
@@ -26,6 +28,9 @@ class QuickDeliver extends StatelessWidget {
         ),
         BlocProvider<StoresCubit>(
           create: (context) => StoresCubit(),
+        ),
+        BlocProvider<CartCubit>(
+          create: (context) => CartCubit(),
         )
       ],
       child: MaterialApp(

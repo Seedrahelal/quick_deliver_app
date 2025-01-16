@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:quick_deliver/cubit/user_cubit.dart';
+import 'package:quick_deliver/helper/api_constants.dart';
 import 'package:quick_deliver/helper/constants.dart';
 import 'package:quick_deliver/models/user_profile_model.dart';
 
@@ -87,7 +88,8 @@ class ProfilePage extends StatelessWidget {
                     backgroundColor: Colors.white,
                     radius: 82,
                     child: CircleAvatar(
-                      backgroundImage: NetworkImage(userProfile.profileImage),
+                      backgroundImage: NetworkImage(
+                          '${EndPoint.url}${userProfile.profileImage}'),
                       radius: 80,
                     ),
                   ),
@@ -97,17 +99,17 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 20, top: 15),
+          padding: const EdgeInsets.only(left: 20, top: 12),
           child: Text(
             "${userProfile.firstName} ${userProfile.lastName}",
             style: const TextStyle(
-              fontSize: 20,
+              fontSize: 25,
               fontWeight: FontWeight.bold,
               color: Color.fromARGB(255, 18, 42, 82),
             ),
           ),
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 12),
         profileDetail('First Name:', userProfile.firstName),
         profileDetail('Last Name:', userProfile.lastName),
         profileDetail('Phone Number:', userProfile.phoneNumber),
@@ -117,44 +119,39 @@ class ProfilePage extends StatelessWidget {
   }
 
   Widget profileDetail(String title, String value) {
-    return Column(
-      children: [
-        const SizedBox(height: 15),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 25),
-              child: Text(
+    return Padding(
+      padding: const EdgeInsets.only(left: 25, right: 25),
+      child: Column(
+        children: [
+          const SizedBox(height: 12),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 17,
-                  color: Color.fromARGB(255, 18, 42, 82),
-                ),
+                    fontSize: 19,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 18, 42, 82)),
               ),
-            ),
-            const SizedBox(width: 15),
-            Expanded(
-              child: Text(
-                value,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 18, 42, 82),
-                ),
-                overflow: TextOverflow.clip,
+              const SizedBox(width: 15),
+              Expanded(
+                child: Text(value,
+                    style: const TextStyle(
+                        fontSize: 16, color: Color.fromARGB(255, 18, 42, 82)),
+                    overflow: TextOverflow.clip),
               ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 18),
-        const Divider(
-          color: Color.fromARGB(255, 173, 91, 3),
-          endIndent: 25,
-          indent: 25,
-          thickness: 1,
-        ),
-      ],
+            ],
+          ),
+          const SizedBox(height: 18),
+          const Divider(
+            color: Color.fromARGB(255, 173, 91, 3),
+            endIndent: 1,
+            indent: 1,
+            thickness: 1,
+          ),
+        ],
+      ),
     );
   }
 }
