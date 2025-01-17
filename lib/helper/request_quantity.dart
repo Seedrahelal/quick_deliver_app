@@ -37,7 +37,9 @@ Future<dynamic> requestQuantity({
                     onPressed: () {
                       if (selectedQuantity > 1) {
                         setDialogState(() {
-                          selectedQuantity--;
+                          if (selectedQuantity > 1) {
+                            selectedQuantity--;
+                          }
                         });
                       }
                     },
@@ -58,7 +60,9 @@ Future<dynamic> requestQuantity({
                   IconButton(
                     onPressed: () {
                       setDialogState(() {
-                        selectedQuantity++;
+                        if (selectedQuantity < product.stockQuantity) {
+                          selectedQuantity++;
+                        }
                       });
                     },
                     icon: const Icon(
@@ -85,7 +89,7 @@ Future<dynamic> requestQuantity({
             TextButton(
               onPressed: () {
                 onPressed.call(selectedQuantity);
-                Navigator.pop(context);
+              Navigator.pop(context);
               },
               child: const Text(
                 'Confirm',

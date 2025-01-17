@@ -145,7 +145,7 @@ void productPage(BuildContext context, ProductModels product) {
                                 text1: 'Add To Cart',
                                 text2: 'Choose The Quantity:',
                                 onPressed: (int selectedQuantity) {
-                                  var token = EndPoint.userToken;
+                                  var token ="3|dyBj68tUHKb3qgh4jYKOUGVSE5LN47ChtM1oW2y92a23fc6f";
                                   context.read<CartCubit>().addProductToCart(
                                         token: token,
                                         product: product,

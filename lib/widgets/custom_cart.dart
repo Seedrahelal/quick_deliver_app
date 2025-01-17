@@ -28,7 +28,6 @@ class _CustomCartState extends State<CustomCart> {
   @override
   Widget build(BuildContext context) {
     bool isConfirmed = false;
-
     return Center(
       child: Container(
         padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -37,7 +36,10 @@ class _CustomCartState extends State<CustomCart> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                context.read<CartCubit>().confirmOrder(
+                    token: "3|dyBj68tUHKb3qgh4jYKOUGVSE5LN47ChtM1oW2y92a23fc6f", cartItemId: widget.cartId);
+              },
               icon: const Icon(
                 Icons.done,
                 size: 30,
@@ -98,7 +100,7 @@ class _CustomCartState extends State<CustomCart> {
                           text2: 'Choose New Quantity:',
                           onPressed: (int selectedQuantity) {
                             context.read<CartCubit>().updateProductQuantity(
-                                  token: EndPoint.userToken,
+                                  token:"3|dyBj68tUHKb3qgh4jYKOUGVSE5LN47ChtM1oW2y92a23fc6f",
                                   cartItemId: widget.cartId,
                                   newQuantity: selectedQuantity,
                                 );
@@ -122,7 +124,12 @@ class _CustomCartState extends State<CustomCart> {
               ],
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                context.read<CartCubit>().cancelOrder(
+                      token:"3|dyBj68tUHKb3qgh4jYKOUGVSE5LN47ChtM1oW2y92a23fc6f",
+                      cartItemId: widget.cartId,
+                    );
+              },
               icon: const Icon(
                 Icons.cancel_outlined,
                 size: 30,

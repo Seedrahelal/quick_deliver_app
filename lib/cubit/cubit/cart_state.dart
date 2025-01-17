@@ -30,27 +30,3 @@ class ConfirmOrderFailure extends CartState {
   final String errorMessage;
   ConfirmOrderFailure({required this.errorMessage});
 }
-
-class OrdersLoading extends CartState {}
-
-class OrdersSuccess extends CartState {
-  final List<OrderModel> orders;
-  OrdersSuccess({required this.orders});
-}
-
-class OrdersFailure extends CartState {
-  final String errorMessage;
-  OrdersFailure({required this.errorMessage});
-}
-
-class CancelOrderLoading extends CartState {}
-
-class CancelOrderSuccess extends CartState {
-  final String message;
-  CancelOrderSuccess({required this.message});
-}
-
-class CancelOrderFailure extends CartState {
-  final String errorMessage;
-  CancelOrderFailure({required this.errorMessage});
-}

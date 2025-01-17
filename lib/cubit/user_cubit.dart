@@ -26,13 +26,12 @@ class UserCubit extends Cubit<UserState> {
         final String token = responseData['Token'];
         emit(LoginSuccess(token: token));
       } else {
-        final error = jsonDecode(response.body);
         emit(LoginFailure(
-          errorMessage: error['massage'] ?? 'Unknown error occurred',
+          errorMessage: 'Unknown error occurred',
         ));
       }
     } catch (e) {
-      emit(LoginFailure(errorMessage: 'An error occurred: $e'));
+      emit(LoginFailure(errorMessage: 'An error occurred:  ${e.toString()}'));
     }
   }
 
@@ -72,13 +71,13 @@ class UserCubit extends Cubit<UserState> {
         final responseData = jsonDecode(response.body);
         emit(RegisterSuccess());
       } else {
-        final error = jsonDecode(response.body);
         emit(RegisterFailure(
-          errorMessage: error['massage'] ?? 'Unknown error occurred',
+          errorMessage: 'Unknown error occurred',
         ));
       }
     } catch (e) {
-      emit(RegisterFailure(errorMessage: 'An error occurred: $e'));
+      emit(
+          RegisterFailure(errorMessage: 'An error occurred:  ${e.toString()}'));
     }
   }
 
@@ -96,12 +95,10 @@ class UserCubit extends Cubit<UserState> {
       if (response.statusCode == 200 || response.statusCode == 201) {
         emit(LogoutSuccess());
       } else {
-        final errorData = jsonDecode(response.body);
-        final errorMessage = errorData['massage'] ?? 'Unknown error';
-        emit(LogoutFailure(errorMessage: errorMessage));
+        emit(LogoutFailure(errorMessage: 'Unknown error'));
       }
     } catch (e) {
-      emit(LogoutFailure(errorMessage: 'An error occurred: $e'));
+      emit(LogoutFailure(errorMessage: 'An error occurred:  ${e.toString()}'));
     }
   }
 
@@ -121,12 +118,10 @@ class UserCubit extends Cubit<UserState> {
         final userProfile = UserProfile.fromJson(data);
         emit(ProfileSuccess(userProfile: userProfile));
       } else {
-        final errorData = jsonDecode(response.body);
-        final errorMessage = errorData['massage'] ?? 'Failed to load profile';
-        emit(ProfileFailure(errorMessage: errorMessage));
+        emit(ProfileFailure(errorMessage: 'Failed to load profile'));
       }
     } catch (e) {
-      emit(ProfileFailure(errorMessage: 'An error occurred: $e'));
+      emit(ProfileFailure(errorMessage: 'An error occurred: ${e.toString()}'));
     }
   }
 }

@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:quick_deliver/cubit/user_cubit.dart';
 import 'package:quick_deliver/helper/api_constants.dart';
 import 'package:quick_deliver/helper/constants.dart';
+import 'package:quick_deliver/screens/favorite_page.dart';
 import 'package:quick_deliver/screens/my_request.dart';
 import 'package:quick_deliver/screens/profile_page.dart';
 import 'package:quick_deliver/widgets/custom_button.dart';
@@ -54,9 +55,8 @@ class SettingsPage extends StatelessWidget {
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
-                    return const ProfilePage(
-                      token:
-                          '15|pVEH7KbSaCo00mnh01vSuqPnoz3RQaHosuHPAn15de68b862',
+                    return ProfilePage(
+                      token: "3|dyBj68tUHKb3qgh4jYKOUGVSE5LN47ChtM1oW2y92a23fc6f",
                     );
                   },
                 ));
@@ -70,7 +70,13 @@ class SettingsPage extends StatelessWidget {
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.bold)),
-              onTap: () {}),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) {
+                    return const FavoritePage();
+                  },
+                ));
+              }),
           const SizedBox(height: 35),
           ListTile(
               leading: const Icon(FontAwesomeIcons.jediOrder,
@@ -118,7 +124,7 @@ class SettingsPage extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () async {
-                            var token = EndPoint.userToken;
+                            var token ="3|dyBj68tUHKb3qgh4jYKOUGVSE5LN47ChtM1oW2y92a23fc6f";
                             context.read<UserCubit>().logout(token);
                             Navigator.pop(context);
                           },

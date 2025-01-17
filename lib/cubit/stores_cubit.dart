@@ -27,8 +27,9 @@ class StoresCubit extends Cubit<StoresState> {
         final errorMessage = errorData['message'] ?? 'Failed to load stores';
         emit(StoreFailure(errorMessage: errorMessage));
       }
-    } catch (error) {
-      emit(StoreFailure(errorMessage: 'Error fetching stores: $error'));
+    } catch (e) {
+      emit(
+          StoreFailure(errorMessage: 'Error fetching stores: ${e.toString()}'));
     }
   }
 
@@ -49,8 +50,9 @@ class StoresCubit extends Cubit<StoresState> {
         final errorMessage = errorData['message'] ?? 'Failed to load products';
         emit(ProductFailure(errorMessage: errorMessage));
       }
-    } catch (error) {
-      emit(ProductFailure(errorMessage: 'Error fetching products: $error'));
+    } catch (e) {
+      emit(ProductFailure(
+          errorMessage: 'Error fetching products:  ${e.toString()}'));
     }
   }
 
@@ -68,8 +70,8 @@ class StoresCubit extends Cubit<StoresState> {
       } else {
         emit(StoreFailure(errorMessage: 'No stores found.'));
       }
-    } catch (error) {
-      emit(StoreFailure(errorMessage: 'Error: $error'));
+    } catch (e) {
+      emit(StoreFailure(errorMessage: 'Error:  ${e.toString()}'));
     }
   }
 
@@ -88,8 +90,8 @@ class StoresCubit extends Cubit<StoresState> {
       } else {
         emit(ProductFailure(errorMessage: 'No products found.'));
       }
-    } catch (error) {
-      emit(ProductFailure(errorMessage: 'Error: $error'));
+    } catch (e) {
+      emit(ProductFailure(errorMessage: 'Error:  ${e.toString()}'));
     }
   }
 }
